@@ -1,0 +1,18 @@
+# Dockerfile
+
+# Utilisez une image de base appropriée pour votre projet
+FROM ubuntu:20.04
+
+# Installation des dépendances du projet
+RUN apt-get update && apt-get install -y \
+    python3 \
+    python3-pip
+
+# Copie du code source du projet dans l'image
+COPY . /app
+
+# Installation des dépendances Python
+RUN pip3 install -r /app/requirements.txt
+
+# Commande par défaut à exécuter lorsque le conteneur démarre
+CMD ["python3", "/app/main.py"]
